@@ -1,6 +1,8 @@
-import { ORDERED_NODE_SNAPSHOT_TYPE, SiteConfig, SiteDef } from '../site-def';
+import { SiteConfig } from '../framework/site-config';
+import { ORDERED_NODE_SNAPSHOT_TYPE } from '../framework/constants';
+import { HtmlSiteDef } from '../framework/html-site.def';
 
-export class MediaExpertDef extends SiteDef{
+export class MediaExpertDef extends HtmlSiteDef {
   protected getConfig(): SiteConfig {
     return {
       name: 'Media Expert',

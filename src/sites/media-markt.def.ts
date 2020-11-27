@@ -1,6 +1,8 @@
-import { ORDERED_NODE_SNAPSHOT_TYPE, SiteConfig, SiteDef } from '../site-def';
+import { SiteConfig } from '../framework/site-config';
+import { ORDERED_NODE_SNAPSHOT_TYPE } from '../framework/constants';
+import { HtmlSiteDef } from '../framework/html-site.def';
 
-export class MediaMarktDef extends SiteDef {
+export class MediaMarktDef extends HtmlSiteDef {
   protected getConfig(): SiteConfig {
     return {
       name: 'Media Markt',

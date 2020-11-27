@@ -1,6 +1,6 @@
-import { SiteDef } from './site-def';
-import { MediaExpertDef } from './sites/media-expert.def';
+import { SiteDef } from './framework/site.def';
 import { configure } from 'log4js';
+import { NeonetDef } from './sites/neonet.def';
 
 configure({
   appenders: { 'out': { type: 'stdout' } },
@@ -9,7 +9,8 @@ configure({
 
 const sites: SiteDef[] = [
   // new MediaMarktDef(),
-  new MediaExpertDef()
+  // new MediaExpertDef(),
+  new NeonetDef()
 ];
 
 sites.forEach(site => {
