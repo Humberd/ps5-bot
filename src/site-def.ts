@@ -1,4 +1,5 @@
 import { JSDOM } from 'jsdom';
+import { getLogger } from 'log4js';
 import fetch from 'node-fetch';
 
 export interface SiteConfig {
@@ -10,6 +11,9 @@ export interface SiteConfig {
 export const ORDERED_NODE_SNAPSHOT_TYPE = 7;
 
 export abstract class SiteDef {
+  private config = this.getConfig();
+  private logger = getLogger(this.config.name)
+
   protected abstract getConfig(): SiteConfig;
 
   protected abstract hasUnexpectedChanges(document: Document): boolean;
@@ -18,14 +22,16 @@ export abstract class SiteDef {
     const config = this.getConfig();
 
     const body = await this.getBodyFor(config.url, config.cookie);
-
     const dom = new JSDOM(body);
 
-    const document = dom.window.document;
-
-    this.hasUnexpectedChanges(dom.window.document)
-
-    console.log(document);
+    const somethingChanged = this.hasUnexpectedChanges(dom.window.document)
+    if (!somethingChanged) {
+      this.logger.info(`Nothing changed...`);
+    } else {
+      this.logger.warn(`-----------------------------------`);
+      this.logger.warn(`SOMETHING CHANGED!!!`);
+      this.logger.warn(`-----------------------------------`);
+    }
   }
 
   private async getBodyFor(url: string, cookie: string): Promise<string> {

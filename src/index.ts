@@ -1,8 +1,15 @@
 import { SiteDef } from './site-def';
-import { MediaMarktDef } from './sites/media-markt-def';
+import { MediaExpertDef } from './sites/media-expert.def';
+import { configure } from 'log4js';
+
+configure({
+  appenders: { 'out': { type: 'stdout' } },
+  categories: { default: { appenders: ['out'], level: 'info' } }
+})
 
 const sites: SiteDef[] = [
-  new MediaMarktDef()
+  // new MediaMarktDef(),
+  new MediaExpertDef()
 ];
 
 sites.forEach(site => {
