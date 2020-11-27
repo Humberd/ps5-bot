@@ -1,6 +1,6 @@
 import { SiteDef } from './framework/site.def';
 import { configure } from 'log4js';
-import { NeonetDef } from './sites/neonet.def';
+import { EuroDef } from './sites/euro.def';
 
 configure({
   appenders: { 'out': { type: 'stdout' } },
@@ -10,7 +10,8 @@ configure({
 const sites: SiteDef[] = [
   // new MediaMarktDef(),
   // new MediaExpertDef(),
-  new NeonetDef()
+  // new NeonetDef(),
+  new EuroDef()
 ];
 
 sites.forEach(site => {
