@@ -6,7 +6,7 @@ export class AvansDef extends HtmlSiteDef {
   protected getConfig(): SiteConfig {
     return {
       name: 'Avans',
-      url: 'https://www.avans.pl/konsole-i-gry/playstation-5/konsole-ps5'
+      url: 'https://www.avans.pl/konsole-i-gry/playstation-5/konsole-ps5',
     };
   }
 
@@ -25,5 +25,4 @@ export class AvansDef extends HtmlSiteDef {
 
     return xPathResult.snapshotLength === 0;
   }
-
 }

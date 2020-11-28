@@ -6,12 +6,13 @@ export class EmpikDef extends HtmlSiteDef {
   protected getConfig(): SiteConfig {
     return {
       name: 'Empik',
-      url: 'https://www.empik.com/gry-i-programy/playstation-5'
+      url: 'https://www.empik.com/gry-i-programy/playstation-5',
     };
   }
 
   protected hasUnexpectedChanges(document: Document): boolean {
-    const phrase = 'Nakład konsol został wyczerpany Pozostałe produkty dostępne tylko online';
+    const phrase =
+      'Nakład konsol został wyczerpany Pozostałe produkty dostępne tylko online';
 
     // @ts-ignore
     const xPathResult = document.evaluate(
@@ -24,5 +25,4 @@ export class EmpikDef extends HtmlSiteDef {
 
     return xPathResult.snapshotLength !== 1;
   }
-
 }

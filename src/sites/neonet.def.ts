@@ -6,20 +6,21 @@ interface NeonetResponse {
     landingPage: {
       name: string;
       modules: {
-        id: number,
-        position: number,
-        type: string,
-        parameters: string
-      }[]
-    }
-  }
+        id: number;
+        position: number;
+        type: string;
+        parameters: string;
+      }[];
+    };
+  };
 }
 
 export class NeonetDef extends JsonSiteDef<NeonetResponse> {
   protected getConfig(): SiteConfig {
     return {
       name: 'Neonet',
-      url: 'https://www.neonet.pl/graphql?query=query%20landingPageResolver($id:%20Int!)%20%7B%20landingPage:%20landingPageResolver(id:%20$id)%20%7B%20name%20custom_css%20teaser_alt%20teaser_file%20teaser_file_mobile%20show_teaser%20date_from%20clock_type%20modules%20%7B%20id%20position%20type%20parameters%20%7D%20is_outdated%20%7D%0A%7D%0A&variables=%7B%22id%22:1451%7D&v=2.54.0'
+      url:
+        'https://www.neonet.pl/graphql?query=query%20landingPageResolver($id:%20Int!)%20%7B%20landingPage:%20landingPageResolver(id:%20$id)%20%7B%20name%20custom_css%20teaser_alt%20teaser_file%20teaser_file_mobile%20show_teaser%20date_from%20clock_type%20modules%20%7B%20id%20position%20type%20parameters%20%7D%20is_outdated%20%7D%0A%7D%0A&variables=%7B%22id%22:1451%7D&v=2.54.0',
     };
   }
 
@@ -38,11 +39,10 @@ export class NeonetDef extends JsonSiteDef<NeonetResponse> {
     }
 
     /**
-     * Cannot check all the message, because from the backend we get encoded
+     * Cannot check all the message, because from the backend we get them encoded
      */
-    const lastPartOfMessage = 'w celu uzyskania dalszych aktualizacji.'
+    const lastPartOfMessage = 'w celu uzyskania dalszych aktualizacji.';
 
     return module.id === 7201 && module.parameters.includes(lastPartOfMessage);
   }
-
 }

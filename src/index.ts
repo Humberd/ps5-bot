@@ -12,7 +12,7 @@ import { AvansDef } from './sites/avans.def';
 
 configure({
   appenders: { out: { type: 'stdout' } },
-  categories: { default: { appenders: ['out'], level: 'info' } }
+  categories: { default: { appenders: ['out'], level: 'info' } },
 });
 
 // 5 minutes
@@ -25,11 +25,11 @@ const sites: SiteDef[] = [
   new EuroDef(),
   new EmpikDef(),
   new AvansDef(),
-  new KomputronikDef()
+  new KomputronikDef(),
 ];
 
 function sleep(timer: number): Promise<void> {
-  return new Promise<void>(resolve => setTimeout(() => resolve(), timer));
+  return new Promise<void>((resolve) => setTimeout(() => resolve(), timer));
 }
 
 async function main() {
@@ -44,4 +44,3 @@ async function main() {
 }
 
 main();
-

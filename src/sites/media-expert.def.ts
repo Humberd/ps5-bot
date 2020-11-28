@@ -6,12 +6,13 @@ export class MediaExpertDef extends HtmlSiteDef {
   protected getConfig(): SiteConfig {
     return {
       name: 'Media Expert',
-      url: 'https://www.mediaexpert.pl/gaming/playstation-5/konsole-ps5/konsola-sony-ps5'
+      url:
+        'https://www.mediaexpert.pl/gaming/playstation-5/konsole-ps5/konsola-sony-ps5',
     };
   }
 
   protected hasUnexpectedChanges(document: Document): boolean {
-    return !this.hasKeyword(document) || !this.hasClassName(document)
+    return !this.hasKeyword(document) || !this.hasClassName(document);
   }
 
   private hasKeyword(document: Document): boolean {
@@ -32,5 +33,4 @@ export class MediaExpertDef extends HtmlSiteDef {
   private hasClassName(document: Document): boolean {
     return document.querySelectorAll('.c-availabilityNotification').length > 0;
   }
-
 }

@@ -7,7 +7,7 @@ if (
   !process.env.SENDGRID_MAIL ||
   !process.env.TARGET_MAIL
 ) {
-  throw new Error('Not all required env variables found')
+  throw new Error('Not all required env variables found');
 }
 
 const logger = getLogger('MailSender');

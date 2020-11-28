@@ -22,7 +22,7 @@ export abstract class SiteDef {
       // we are resetting after a success occurs, because there could be a temporary 400
       this.alreadySentErrorMail = false;
     } catch (e) {
-      this.logger.error(e)
+      this.logger.error(e);
       if (!this.alreadySentErrorMail) {
         this.alreadySentErrorMail = true;
         this.mailSender.sendError(this.config.name, e);

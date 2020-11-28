@@ -3,10 +3,14 @@ import { JSDOM } from 'jsdom';
 
 export abstract class HtmlSiteDef extends SiteDef {
   protected async _internalTriggerChanges(): Promise<void> {
-    const body = await this.getBodyFor(this.config.url, this.config.cookie, 'html');
+    const body = await this.getBodyFor(
+      this.config.url,
+      this.config.cookie,
+      'html'
+    );
     const dom = new JSDOM(body);
 
-    const somethingChanged = this.hasUnexpectedChanges(dom.window.document)
+    const somethingChanged = this.hasUnexpectedChanges(dom.window.document);
     if (!somethingChanged) {
       this.logger.info(`Nothing changed...`);
     } else {
