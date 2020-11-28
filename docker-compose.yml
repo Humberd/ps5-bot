@@ -1,0 +1,9 @@
+version: '3'
+services:
+  ps5-bot:
+    build:
+      context: .
+    restart: always
+    env_file:
+      - .env
+

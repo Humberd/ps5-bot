@@ -2,7 +2,15 @@ import sgMail from '@sendgrid/mail';
 import { MailDataRequired } from '@sendgrid/helpers/classes/mail';
 import { getLogger } from 'log4js';
 
-const logger = getLogger('MailSender')
+if (
+  !process.env.SENDGRID_API_KEY ||
+  !process.env.SENDGRID_MAIL ||
+  !process.env.TARGET_MAIL
+) {
+  throw new Error('Not all required env variables found')
+}
+
+const logger = getLogger('MailSender');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 export class MailSender {
@@ -11,16 +19,17 @@ export class MailSender {
       to: process.env.TARGET_MAIL,
       from: process.env.SENDGRID_MAIL,
       subject: `[ps5-bot] ${siteName} has changed`,
-      text: `${siteName} has changed`
-    }
+      text: `${siteName} has changed`,
+    };
 
-    sgMail.send(mailData)
+    sgMail
+      .send(mailData)
       .then(() => {
-        logger.info('Mail sent')
+        logger.info('Mail sent');
       })
-      .catch(error => {
-        logger.warn(error)
-      })
+      .catch((error) => {
+        logger.warn(error);
+      });
   }
 
   sendError(siteName: string, error: Error): void {
@@ -28,16 +37,16 @@ export class MailSender {
       to: process.env.TARGET_MAIL,
       from: process.env.SENDGRID_MAIL,
       subject: `[ps5-bot] ERROR in ${siteName}`,
-      text: `${error.stack}`
-    }
+      text: `${error.stack}`,
+    };
 
-    sgMail.send(mailData)
+    sgMail
+      .send(mailData)
       .then(() => {
-        logger.info('Mail sent')
+        logger.info('Mail sent');
       })
-      .catch(error => {
-        logger.warn(error)
-      })
+      .catch((error) => {
+        logger.warn(error);
+      });
   }
 }
-
