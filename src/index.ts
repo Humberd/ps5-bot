@@ -16,9 +16,7 @@ configure({
 });
 
 // 5 minutes
-// const TIMEOUT = 5 * 60 * 1000;
-// fixme: increase to 5 minutes
-const TIMEOUT = 5 * 1000;
+const TIMEOUT = 5 * 60 * 1000;
 
 const sites: SiteDef[] = [
   new MediaMarktDef(),
@@ -40,6 +38,7 @@ async function main() {
       await site.triggerChanges();
     }
 
+    console.log('------------- SLEEPING -------------');
     await sleep(TIMEOUT);
   }
 }
