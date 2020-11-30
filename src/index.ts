@@ -1,5 +1,7 @@
 require('dotenv').config();
 
+import { XKomDef } from './sites/x-kom.def';
+import { MoreleNetDef } from './sites/morele-net.def';
 import { SiteDef } from './framework/site.def';
 import { configure } from 'log4js';
 import { KomputronikDef } from './sites/komputronik.def';
@@ -26,6 +28,8 @@ const sites: SiteDef[] = [
   new EmpikDef(),
   new AvansDef(),
   new KomputronikDef(),
+  new XKomDef(),
+  new MoreleNetDef(),
 ];
 
 function sleep(timer: number): Promise<void> {
