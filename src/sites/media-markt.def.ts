@@ -12,6 +12,6 @@ export class MediaMarktDef extends HtmlSiteDef {
   }
 
   protected hasUnexpectedChanges(document: Document): boolean {
-    return document.querySelectorAll('.m-tiles .is-desktop').length !== 3;
+    return document.querySelectorAll('.m-tiles .is-desktop').length !== 4;
   }
 }
